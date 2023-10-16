@@ -1,0 +1,54 @@
+{
+  "extends": [
+    "@react-native-community",
+    "eslint:recommended",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-native",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "warn", {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      { "avoidEscape": true }
+    ],
+    "no-console": "warn",
+    "no-bitwise": 0,
+    "prefer-const": "warn",
+    "react/react-in-jsx-scope": "off",
+    "semi": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [ "@typescript-eslint", "prettier" ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ]
+    }
+  ],
+  "globals": {
+    "JSX": true
+  }
+}

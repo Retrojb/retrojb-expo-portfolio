@@ -2,11 +2,25 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@app/*": ["./app/**/*"],
+      "@assets/**/*": [ "assets/*" ],
+      "@components/*": [ "./components/*" ],
+      "@hooks/*": [ "./shared/hooks/*" ],
+      "@providers/*": [ "./shared/providers/*" ],
+      "@screens/**/*": [ "./src/screens/*"],
+      "@config/*": [ "./config/*"]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+  ],
+  "exclude": [ "node_modules" ]
 }

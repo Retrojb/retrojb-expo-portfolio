@@ -1,14 +1,52 @@
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { Pressable, StyleSheet } from "react-native";
+import { Box, Button, ButtonText, styled, StyledProvider, Text, View } from "@gluestack-ui/themed";
+import { config } from "@config/gluestack-ui.config";
 
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+const StyledButton = styled(Pressable, {
+  bg: "$primary600",
+  px: "$6",
+  py: "$4",
+  _dark: {
+    bg: "$info600",
+  },
+  _light: {
+    bg: "$info800",
+  },
+})
+export function ColorMode({ ...args }) {
+  const [currentColorMode, setCurrentColorMode] = React.useState("light")
 
+  return (
+    <StyledProvider config={config} colorMode={currentColorMode}>
+      <Pressable
+        style={{
+          backgroundColor: "gray",
+          padding: 12,
+          marginBottom: 12,
+        }}
+        onPress={() => {
+          setCurrentColorMode(currentColorMode === "dark" ? "light" : "dark")
+        }}
+      >
+        <Text style={{ color: "white" }}>
+          Toggle {currentColorMode === "dark" ? "light" : "dark"}
+        </Text>
+      </Pressable>
+      <StyledButton />
+    </StyledProvider>
+  )
+}
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Button bg={'$primary800'}>
+        <ButtonText>Hooray</ButtonText>
+      </Button>
+        <ColorMode />
+      <Box>
+
+      </Box>
     </View>
   );
 }
